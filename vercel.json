@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "name": "stellar-constellation",
+  "rewrites": [
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}
