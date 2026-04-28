@@ -178,32 +178,43 @@
 /* Form Container */
 .login-wrapper .form-wrapper {
   width: 320px;
-  background-color: #1a222f;
-  border-radius: 20px;
-  overflow: hidden; 
+  height: 480px;
+  perspective: 1000px;
   opacity: 0;
   pointer-events: none;
-  border: 2px solid transparent;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
-  transition: opacity 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
   z-index: 20;
+  transition: opacity 0.5s ease;
 }
 
-.login-wrapper .form-slider {
-  display: flex;
-  width: 640px; 
-  transition: transform 0.4s ease-in-out;
+.login-wrapper .form-flipper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-style: preserve-3d;
 }
 
-.login-wrapper .form-wrapper.show-signup .form-slider {
-  transform: translateX(-320px);
+.login-wrapper .form-wrapper.show-signup .form-flipper {
+  transform: rotateY(180deg);
 }
 
 .login-wrapper .form-panel {
-  width: 320px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #1a222f;
+  border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
-  flex-shrink: 0;
+  backface-visibility: hidden;
+  border: 2px solid transparent;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+  transition: border-color 0.5s ease, box-shadow 0.5s ease;
+  overflow-y: auto;
+}
+
+.login-wrapper .form-panel:nth-child(2) {
+  transform: rotateY(180deg);
 }
 
 .login-wrapper .form-panel h2 {
@@ -339,6 +350,9 @@
 .login-wrapper.lamp-on .form-wrapper { 
   opacity: 1; 
   pointer-events: all; 
+}
+
+.login-wrapper.lamp-on .form-panel {
   border-color: rgba(217, 70, 239, 0.6); 
   box-shadow: 0 0 30px rgba(217, 70, 239, 0.3); 
 }

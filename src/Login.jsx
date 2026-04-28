@@ -278,7 +278,7 @@ export default function Login({ onLoginSuccess }) {
         </div>
 
         <div className={`form-wrapper ${isSignup ? 'show-signup' : ''}`}>
-          <div className="form-slider">
+          <div className="form-flipper">
             
             <form className="form-panel" onSubmit={handleLogin}>
               <h2>Sign In</h2>
